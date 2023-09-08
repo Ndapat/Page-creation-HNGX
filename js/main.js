@@ -8,7 +8,7 @@ function updateDateTime() {
     const timeElement = document.querySelector('[data-testid="currentUTCTime"]');
 
     dateElement.textContent = `Current Day: ${dayOfWeek}`;
-    timeElement.textContent = `Current Time (UTC): ${utcTime}`;
+    timeElement.textContent = `Current Time (UTC): ${utcTimeString.substr(11, 12)}.${milliseconds}`;
 }
 
 // Call the update function initially and then every second to keep the data real-time
