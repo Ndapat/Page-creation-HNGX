@@ -12,5 +12,5 @@ function updateDateTime() {
 
 // Call the update function initially and then every second to keep the data real-time
 updateDateTime();
-setInterval(updateDateTime, 1000);
+setInterval(updateDateTime, 1);
         
