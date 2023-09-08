@@ -1,19 +1,30 @@
-//declare the array
-const   daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-//function to update the current day of the week
-function updateDayOfWeek() {
+function updateDateTime() {
+    const daysOfWeek = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+  
     const currentDate = new Date();
-    const dayOfWeek = days[currentDate.getUTCDay()];
-
-    document.querySelector('[data-testid="currentDayOfTheWeek"]').textContent = dayOfWeek;
-}
-//function to update the current utc time
-function updateUTCTime() {
-   const currentDate = new Date();
-   const utcTime = currentDate
-    document.querySelector('[data-testid="currentUTCTime"]').textContent = utcTime
-}
-//call the update function every second
-setInterval(updateDayOfWeek, 1000);
-setInterval(updateUTCTime, 1000);
+  
+    const currentDayOfTheWeekElement = document.getElementById("dayOfTheWeek");
+    const currentUTCtimeElement = document.getElementById("utcTime");
+  
+    const currentDay = daysOfWeek[currentDate.getUTCDay()];
+    currentDayOfTheWeekElement.textContent = currentDay;
+  
+    const currentUtcTime = currentDate.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      timeZoneName: "short",
+    });
+    currentUTCtimeElement.textContent = currentUtcTime;
+  }
+  
+  updateDateTime();
+  setInterval(updateDateTime, 1000);
