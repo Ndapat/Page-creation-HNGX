@@ -1,21 +1,12 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Slack Name
-    const slackNameElement = document.querySelector('[data-testid="slackUserName"]');
-    slackNameElement.textContent = "Your Slack Name";
-
-    // Current Day of the Week
-    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+// Function to update the current UTC time including milliseconds
+function updateUTCTime() {
     const currentDate = new Date();
-    const currentDayOfWeek = daysOfWeek[currentDate.getUTCDay()];
-    const currentDayOfWeekElement = document.querySelector('[data-testid="currentDayOfTheWeek"]');
-    currentDayOfWeekElement.textContent = currentDayOfWeek;
+    const utcTime = currentDate.toISOString().substr(11, 12); // Extract HH:MM:SS.SSS from UTC string
+    document.querySelector('[data-testid="currentUTCTime"]').textContent = utcTime;
+}
 
-    // Current UTC Time
-    const currentUTCTimeElement = document.querySelector('[data-testid="currentUTCTime"]');
-    const currentUTCTime = currentDate.toISOString();
-    currentUTCTimeElement.textContent = currentUTCTime;
-
-    // Track
-    const trackElement = document.querySelector('[data-testid="myTrack"]');
-    trackElement.textContent = "Your Track (e.g., Frontend)";
-});
+// Call the update functions initially and then every millisecond to keep the data real-time
+updateDayOfTheWeek();
+updateUTCTime();
+setInterval(updateDayOfTheWeek, 1000);
+setInterval(updateUTCTime, 1); // Update every millisecond
