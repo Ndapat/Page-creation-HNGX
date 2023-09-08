@@ -10,7 +10,6 @@ function updateDateTime() {
     ];
   
     const currentDate = new Date();
-  
     const currentDayOfTheWeekElement = document.getElementById("dayOfTheWeek");
     const currentUTCtimeElement = document.getElementById("utcTime");
   
